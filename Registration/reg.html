@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="reg.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <script src="https://kit.fontawesome.com/95346ea11f.js" crossorigin="anonymous"></script>
+</head>
+<body onload=" togg(1)">
+    <div class="card">
+        <div class="nav">
+            <ul>
+                <li id="#dod"><a onclick="rgpg(0)">General</a></li>
+                <li><a onclick="rgpg(1)">Personal-Info</a></li>
+                <li><a onclick="rgpg(2)">Upload files</a></li>
+            </ul>
+        </div>
+            <div class="con">
+                <!--GENERAL PAGE-->
+                <div class="rgpg" style="display: block;">
+                    <form class="container">
+                        <div>
+                            <div style="display: none;">
+                                <input type="radio" id="rad0" value="1" name="dd">
+                                <input type="radio" id="rad1" value="0" name="dd">
+                            </div>
+                            <div class="tog">
+                                <a id="tog0" onclick=" togg(1)">Student</a>
+                                <a id="tog1" onclick=" togg(0)">Consultant</a>
+                            </div>
+                            <br>
+                            <div class="input-field">
+                                <input type="text" required>
+                                <label>Username</label>
+                            </div>
+                            <div class="input-field">
+                                <input class="pswrd" type="password" required>
+                                <span class="show">SHOW</span>
+                                <label>Password</label>
+                            </div>
+                            <div class="button">
+                                <div class="inner"></div>
+                                    <button href="reg.html" target="blank">CONTINUE</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--GENERAL END-->
+                <!--PERSONAL INFO-->
+                <div class="rgpg" style="display: none;">
+                    <div class="box">
+                        
+                    </div>
+                </div>
+                <!--PERSONAL INFO END-->
+                <!--UPLOAD FILES START-->
+                <div class="rgpg" style="display: none;">
+                    <div class="uf">
+    <!--UPLOAD END-->
+    <script>
+        function togg(e){
+            var rad = document.getElementById("rad0");
+            var rad1 = document.getElementById("rad1");
+            var tag = document.getElementById("tog0");
+            var tag1 = document.getElementById("tog1");
+            if(e == 1){
+                rad.checked = true;
+                rad1.checked = false;
+                tag.style.backgroundColor = "darkblue";
+                tag1.style.backgroundColor = "lightgrey";
+            }else{
+                rad1.checked = true;
+                rad.checked = false;
+                tag.style.backgroundColor = "lightgrey";
+                tag1.style.backgroundColor = "darkblue";
+            }
+        }
+    </script>
+    <script>
+        var pg = document.getElementsByClassName("rgpg");
+        console.log(pg)
+        function rgpg(a){
+            for (var i = 0; i < pg.length; i++){
+                console.log(i)
+                if(i == a){
+                    pg[i].style.display = "block";
+                }
+                else{
+                    pg[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
