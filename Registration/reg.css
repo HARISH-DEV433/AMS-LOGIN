@@ -47,7 +47,7 @@ input:focus{
 .input-field label, span.show{
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-45%);
 }
 .input-field label{
   left: 15px;
@@ -105,10 +105,7 @@ form .button{
   cursor: pointer;
   font-family: 'Montserrat', sans-serif;
 }
-
-
 /*Login End Not Touched  Harish Code strated*/
-
 .tog a{
   width: 150px;
   padding: 12px;
@@ -165,57 +162,149 @@ form .button{
 /*Registration starts*/
 /*personal-info starts*/
 .box{
-  width: 50vw;
+  width: 60vw;
   height: 70vh;
   margin-left: 6;
   margin-top: 0;
   border-radius: 0;
   border-right: 3px solid black;
-  background-color: gray;
 }
-.fil{
-  display: inline;
-  width: 55vw;
-  height: 50vh;
-  margin-left: 0;
+.sub .input-field input{
+  height: 100%;
+  width: 75%;
+  border: 1px solid silver;
+  padding-left: 15px;
+  border-radius: 10px;
+  outline: none;
+  font-size: 19px;
+  transition: .4s;
+}
+.sub input:focus{
+  border: 1px solid #1DA1F2;
+}
+.sub .input-field label.show{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-45%);
+}
+.sub .input-field label{
+  left: 60px;
+  pointer-events: none;
+  color: grey;
+  font-size: 18px;
+  transition: .4s;
+}
+.sub input:focus ~ label,
+.sub input:valid ~ label{
+  transform: translateY(-33px);
+  background: white;
+  font-size: 16px;
+  color: #00dbde;
+}
+.sub a{
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 500px;
+  transition-property: background-color,border-color,color,box-shadow,filter;
+  transition-duration: .3s;
+  border: 1px solid transparent;
+  letter-spacing: 2px;
+  min-width: 160px;
+  text-transform: uppercase;
+  white-space: normal;
+  font-weight: 700;
+  text-align: center;
+  padding: 17px 48px;
+  color: #fff;
+  background-color: #1DA1F2;
+  height: 48px;
+}
+.sub a:hover{
+    transform: scale(1.04);
+    cursor: pointer;
+    background-color: #21e065;
 }
 /*PERSONAL-INFO END*/
 /*UPLOAD FILES*/
-.scsc{
-  margin-top: 4rem;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+.uf{
+  width: 90vw;
+  height: 70vh;
 }
-.need{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 90vh;
-  /* width: 85vw; */
-  height: 72vh;
-  margin-top: -4vh;
+.bu .input-field input{
+  height: 100%;
+  width: 75%;
+  border: 1px solid silver;
+  padding-left: 15px;
+  border-radius: 10px;
+  outline: none;
+  font-size: 19px;
+  transition: .4s;
 }
-.feed{
-  margin-left: -7rem;
-  padding: 10px;
-  margin-top: 0;
-  /* align-items: center; */
-  display: inline-flex;
-  justify-content: center;
-  gap: 1rem;
+.bu input:focus{
+  border: 1px solid #1DA1F2;
 }
-.fed{
-  margin-left: -7rem;
-  padding: 10px;
-  margin-top: 0;
-  /* align-items: center; */
-  display: inline-flex;
-  justify-content: center;
-  gap: 2.5rem;
+.bu .input-field label.show{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-45%);
+}
+.bu .input-field label{
+  left: 60px;
+  pointer-events: none;
+  color: grey;
+  font-size: 18px;
+  transition: .4s;
+}
+.bu input:focus ~ label,
+.bu input:valid ~ label{
+  transform: translateY(-33px);
+  background: white;
+  font-size: 16px;
+  color: #00dbde;
+}
+.col label{
+  font-size: 23px;
+  padding: 0 55px;
+  margin-left: -5px;
+  display: inline-block;
+}
+.bu .col a{
+  display: block;
+  padding: 2.5vh;
   cursor: pointer;
+  width: 16vw;
+  height: 10vh;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 9vh;
+  margin-left: -254px;
+  border-radius: 10px;
+  gap: rem;
+  background-color: orange;
 }
-/*UPLOAD FILES END*/
-#dod{
-  background-color: #e1e1e1e1;
+.bu .col a:hover{
+  box-shadow: 2px 2px 5px orange;
+}
+#bit{
+  display: block;
+  padding: 14px;
+  text-decoration: none;
+  font-size: 19px;
+  background-color: #1DA1F2;
+  color: white;
+  width: 33vh;
+  height: 9vh;
+  border-radius: 20px;
+  margin-top: 13vh;
+  margin-left: 37vw;
+}
+#bit:hover{
+  box-shadow: 2px 2px 5px #1DA1F2;
 }
