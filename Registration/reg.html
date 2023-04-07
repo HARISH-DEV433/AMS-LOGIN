@@ -113,27 +113,31 @@
                                 <label>10th-Marksheet</label>
                                 <a href="#" id="btntoggle" onclick=drdg()>UPLOAD&nbsp;&nbsp;&#9729;</a></div>
                                 <div><label>11th-Marksheet</label>
-                                <a href="#">UPLOAD&nbsp;&nbsp;&#9729;</a></div>
+                                <a href="#" id="btntoggle" onclick=drdg()>UPLOAD&nbsp;&nbsp;&#9729;</a></div>
                                 <div><label>12th-Marksheet</label>
-                                <a href="#">UPLOAD&nbsp;&nbsp;&#9729;</a></div>
+                                <a href="#" id="btntoggle" onclick=drdg()>UPLOAD&nbsp;&nbsp;&#9729;</a></div>
                             </div>
                                 <div class="so" style="display: inline-flex;">
                                     <div>
                                     <label>Aadhaar-certificate</label>
-                                    <a href="#">UPLOAD&nbsp;&nbsp;&#9729;</a></div>
+                                    <a href="#" id="btntoggle" onclick=drdg()>UPLOAD&nbsp;&nbsp;&#9729;</a></div>
                                     <div><label>Transfer-certificate</label>
-                                    <a href="#">UPLOAD&nbsp;&nbsp;&#9729;</a></div>
+                                    <a href="#" id="btntoggle" onclick=drdg()>UPLOAD&nbsp;&nbsp;&#9729;</a></div>
                                 </div>
                             <a href="#" id="bit">SUBMIT &#10004;</a>
                         </div>
                         <!-- ------DRAG AND DROP-------- -->
-                        <div id="drag-area" class="drag-area" style="display: none;">
-                            <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                            <header>Drag & Drop to Upload File</header>
-                            <span>OR</span>
-                            <button>Browse File</button>
-                            <input type="file" hidden>
+                        <div class="drag-con" id="drag-con" onclick="close()" style="display: none;">
+                            <div class="drag-area">
+                                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                <header>Drag & Drop to Upload File</header>
+                                <span>OR</span>
+                                <button>Browse File</button>
+                                <input type="file" hidden />
+                            </div>
+                            <span id="crossbtn" onclick="closedad()">&#10539;</span>
                         </div>
+                        
                     </div>
                     
                 </div>
@@ -191,16 +195,26 @@
 
     <!-- ------------------UPLOAD FILES TOGGLE---------------------- -->
     <script>
-        const targetDiv = document.getElementById("drag-area");
+        const targetDiv = document.getElementById("drag-con");
         const btn = document.getElementById("btntoggle");
         
         function drdg(){
-            targetDiv.style.display = "block";
+            targetDiv.style.display = "flex";
 
         };
     </script>
     <!-- ==========================DRAG AND DROP========================== -->
     <script>
+
+        // =======salah touch============
+
+        const closeDiv = document.getElementById("drag-con");
+        const cross = document.getElementById("crossbtn");
+
+        function closedad() {
+        closeDiv.style.display = "none";
+        }
+
         //selecting all required elements
         const dropArea = document.querySelector(".drag-area"),
         dragText = dropArea.querySelector("header"),
