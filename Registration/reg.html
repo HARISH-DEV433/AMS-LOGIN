@@ -141,7 +141,7 @@
                             <div class="top">
                                 <div class="sdsdsd">
                                     <p>Drag & drop image uploading</p>
-                                    <button type="button">Upload</button>
+                                    <button type="file" onclick="importData()">Upload</button>
                                 </div>
                                 <span id="crossbtn" onclick="closedad()" style="cursor: pointer;">&#10539;</span>
 
@@ -236,12 +236,28 @@
         closeDiv.style.display = "none";
         }
 
+        
+
         let files = [],
         dragArea = document.querySelector('.drag-area'),
         input = document.querySelector('.drag-area input'),
         buttondad = document.querySelector('.carddad button'),
         select = document.querySelector('.drag-area .select'),
         containerdad = document.querySelector('.containerdad');
+
+        //button importing
+
+        function importData() {
+            let input = document.createElement('input');
+            input.type = 'file';
+            input.onchange = _ => {
+                // you can use this method to get file and perform respective operations
+                        let files =   Array.from(input.files);
+                        console.log(files);
+                    };
+            input.click();
+            
+            }
 
         /** CLICK LISTENER */
         select.addEventListener('click', () => input.click());
