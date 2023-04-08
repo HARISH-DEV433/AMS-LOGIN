@@ -364,17 +364,7 @@ form .button {
   width: 90vw;
   height: 80vh;
 } */
-.drag-area {
-  position: relative;
-  border: 2px dashed #fff;
-  height: 300px;
-  width: 600px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
+
 .drag-con {
   top: 20%;
   position: absolute;
@@ -384,57 +374,147 @@ form .button {
   height: 70vh;
   background: #ffbb2a;
 }
-.drag-con span {
-  font-size: 25px;
-  font-weight: 700;
-  top: 0;
-  /* right: 0; */
-  cursor: pointer;
-  float: right;
-  /* position: absolute; */
-  margin-bottom: 24.5rem;
-}
-.drag-area.active {
-  border: 2px solid #fff;
+
+/* ==========new dad============ */
+
+.carddad {
+  top: 20%;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  width: 90vw;
+  height: 70vh;
+  padding: 15px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  overflow: hidden;
+  background: #fafbff;
 }
 
-.drag-area .icon {
-  font-size: 75px;
-  color: #fff;
-  margin-top: 20px;
-}
+.carddad .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-.drag-area header {
-  font-size: 24px;
-  font-weight: 500;
-  /* margin-top: 20px; */
-}
-
-.drag-area span {
-  font-size: 21px;
-  font-weight: 500;
-  color: #fff;
-  margin: 5px 0;
-  margin-top: -30px;
-  /* margin-bottom: 20px; */
-}
-
-.drag-area button {
-  padding: 10px 25px;
-  font-size: 18px;
-  font-weight: 500;
-  border: none;
-  outline: none;
-  background: #fff;
-  color: #ffbb2a;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-
-.drag-area img {
-  height: 100%;
   width: 100%;
-  object-fit: cover;
-  border-radius: 6px;
+}
+.carddad .sdsdsd {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+}
+.carddad .top span {
+  font-size: 23px;
+  font-weight: 600;
+}
+.carddad p {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #878a9a;
+}
+
+.carddad button {
+  outline: 0;
+  border: 0;
+  -webkit-appearence: none;
+  background: #5256ad;
+  color: #fff;
+  border-radius: 4px;
+  transition: 0.3s;
+  cursor: pointer;
+  font-weight: 400;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  font-size: 0.8rem;
+  padding: 8px 13px;
+}
+
+.carddad button:hover {
+  opacity: 0.8;
+}
+
+.carddad button:active {
+  transform: translateY(5px);
+}
+
+.carddad .drag-area {
+  width: 100%;
+  height: 260px;
+  border-radius: 5px;
+  border: 2px dashed #d5d5e1;
+  color: #c8c9dd;
+  font-size: 0.9rem;
+  font-weight: 500;
+  position: relative;
+  background: #dfe3f259;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  -webkit-user-select: none;
+  margin-top: 10px;
+}
+
+.carddad .drag-area .visible {
+  font-size: 18px;
+}
+.carddad .select {
+  color: #5256ad;
+  margin-left: 5px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.carddad .select:hover {
+  opacity: 0.6;
+}
+
+.carddad .containerdad {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 10px;
+}
+
+.carddad .containerdad .image {
+  width: calc(26% - 19px);
+  margin-right: 15px;
+  height: 120px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.carddad .containerdad .image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.carddad .containerdad .image span {
+  position: absolute;
+  top: -2px;
+  right: 9px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* dragover class will used in drag and drop system */
+.carddad .drag-area.dragover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.carddad .drag-area.dragover .on-drop {
+  display: inline;
+  font-size: 28px;
+}
+
+.carddad input,
+.carddad .drag-area .on-drop,
+.carddad .drag-area.dragover .visible {
+  display: none;
 }

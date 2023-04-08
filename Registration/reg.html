@@ -14,7 +14,7 @@
         <div class="nav">
             <ul>
                 <li onclick="rgpg(0)" id="#dod" class="navactive"><a >General</a></li>
-                <li onclick="rgpg(1)"><a >Personal-Info</a></li>
+                <li onclick="rgpg(1)"><a >Personal-details</a></li>
                 <li onclick="rgpg(2)"><a >Upload files</a></li>
             </ul>
         </div>
@@ -113,7 +113,7 @@
                                 <label>10th-Marksheet</label>
                                 <a href="#" id="btntoggle" onclick=drdg()>UPLOAD&nbsp;&nbsp;&#9729;</a></div>
                                 <div><label>11th-Marksheet</label>
-                                <a href="#" id="btntoggle" onclick=drdg2()>UPLOAD&nbsp;&nbsp;&#9729;</a></div>
+                                <a href="#" id="btntoggle" onclick=drdg()>UPLOAD&nbsp;&nbsp;&#9729;</a></div>
                                 <div><label>12th-Marksheet</label>
                                 <a href="#" id="btntoggle" onclick=drdg()>UPLOAD&nbsp;&nbsp;&#9729;</a></div>
                             </div>
@@ -126,26 +126,26 @@
                                 </div>
                             <a href="#" id="bit">SUBMIT &#10004;</a>
                         </div>
-                        <!-- ------DRAG AND DROP-------- -->
-                        <div class="drag-con" id="drag-con1" onclick="close()" style="display: none;">
-                            <div class="drag-area">
-                                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                                <header>Drag & Drop to Upload File</header>
-                                <span>OR</span>
-                                <button>Browse File</button>
-                                <input type="file" hidden />
+                        <div class="carddad" id="drag-con" onclick="close()" style="display: none;">
+                            <div class="top">
+                                <div class="sdsdsd">
+                                    <p>Drag & drop image uploading</p>
+                                    <button type="file" onclick="importData()">Upload</button>
+                                </div>
+                                <span id="crossbtn" onclick="closedad()" style="cursor: pointer;">&#10539;</span>
+
                             </div>
-                            <span id="crossbtn" onclick="closedad()">&#10539;</span>
-                        </div>
-                        <div class="drag-con" id="drag-con2" onclick="close()" style="display: none;">
                             <div class="drag-area">
-                                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                                <header>Drag & Drop to Upload File</header>
-                                <span>OR</span>
-                                <button>Browse File</button>
-                                <input type="file" hidden />
+                                <span class="visible">
+                                    Drag & drop image here or
+                                    <span class="select" role="button">Browse</span>
+                                </span>
+                                <span class="on-drop">Drop images here</span>
+                                <input name="file" type="file" class="file" multiple />
                             </div>
-                            <span id="crossbtn" onclick="closedad()">&#10539;</span>
+
+                            <!-- IMAGE PREVIEW CONTAINER -->
+                            <div class="containerdad"></div> 
                         </div>
                         
                     </div>
@@ -205,90 +205,126 @@
 
     <!-- ------------------UPLOAD FILES TOGGLE---------------------- -->
     <script>
-        const targetDiv1 = document.getElementById("drag-con1");
-        const targetDiv2 = document.getElementById("drag-con2");
+        const targetDiv = document.getElementById("drag-con");
         const btn = document.getElementById("btntoggle");
         
         function drdg(){
-            targetDiv1.style.display = "flex";
+            targetDiv.style.display = "block";
 
         };
-        function drdg2(){
-            targetDiv2.style.display = "flex";
-
-        }
     </script>
     <!-- ==========================DRAG AND DROP========================== -->
     <script>
 
         // =======salah touch============
 
-        const closeDiv1 = document.getElementById("drag-con1");
-        const closeDiv2 = document.getElementById("drag-con");
+        const closeDiv = document.getElementById("drag-con");
         const cross = document.getElementById("crossbtn");
 
         function closedad() {
-        closeDiv1.style.display = "none";
-        closeDiv2.style.display = "none";
+        closeDiv.style.display = "none";
         }
 
-        //selecting all required elements
-        const dropArea = document.querySelector(".drag-area"),
-        dragText = dropArea.querySelector("header"),
-        button = dropArea.querySelector("button"),
-        input = dropArea.querySelector("input");
-        let file; //this is a global variable and we'll use it inside multiple functions
+        
 
-        button.onclick = ()=>{
-        input.click(); //if user click on the button then the input also clicked
-        }
+        let files = [],
+        dragArea = document.querySelector('.drag-area'),
+        input = document.querySelector('.drag-area input'),
+        buttondad = document.querySelector('.carddad button'),
+        select = document.querySelector('.drag-area .select'),
+        containerdad = document.querySelector('.containerdad');
 
-        input.addEventListener("change", function(){
-        //getting user select file and [0] this means if user select multiple files then we'll select only the first one
-        file = this.files[0];
-        dropArea.classList.add("active");
-        showFile(); //calling function
-        });
+        //button importing
 
-
-        //If user Drag File Over DropArea
-        dropArea.addEventListener("dragover", (event)=>{
-        event.preventDefault(); //preventing from default behaviour
-        dropArea.classList.add("active");
-        dragText.textContent = "Release to Upload File";
-        });
-
-        //If user leave dragged File from DropArea
-        dropArea.addEventListener("dragleave", ()=>{
-        dropArea.classList.remove("active");
-        dragText.textContent = "Drag & Drop to Upload File";
-        });
-
-        //If user drop File on DropArea
-        dropArea.addEventListener("drop", (event)=>{
-        event.preventDefault(); //preventing from default behaviour
-        //getting user select file and [0] this means if user select multiple files then we'll select only the first one
-        file = event.dataTransfer.files[0];
-        showFile(); //calling function
-        });
-
-        function showFile(){
-        let fileType = file.type; //getting selected file type
-        let validExtensions = ["image/jpeg", "image/jpg", "image/png"]; //adding some valid image extensions in array
-        if(validExtensions.includes(fileType)){ //if user selected file is an image file
-            let fileReader = new FileReader(); //creating new FileReader object
-            fileReader.onload = ()=>{
-            let fileURL = fileReader.result; //passing user file source in fileURL variable
-            let imgTag = `<img src="${fileURL}" alt="">`; //creating an img tag and passing user selected file source inside src attribute
-            dropArea.innerHTML = imgTag; //adding that created img tag inside dropArea container
+        function importData() {
+            let input = document.createElement('input');
+            input.type = 'file';
+            input.onchange = _ => {
+                // you can use this method to get file and perform respective operations
+                        let files =   Array.from(input.files);
+                        console.log(files);
+                    };
+            input.click();
+            
             }
-            fileReader.readAsDataURL(file);
-        }else{
-            alert("This is not an Image File!");
-            dropArea.classList.remove("active");
-            dragText.textContent = "Drag & Drop to Upload File";
+
+        /** CLICK LISTENER */
+        select.addEventListener('click', () => input.click());
+
+        /* INPUT CHANGE EVENT */
+        input.addEventListener('change', () => {
+            let file = input.files;
+                
+            // if user select no image
+            if (file.length == 0) return;
+                
+            for(let i = 0; i < file.length; i++) {
+                if (file[i].type.split("/")[0] != 'image') continue;
+                if (!files.some(e => e.name == file[i].name)) files.push(file[i])
+            }
+
+            showImages();
+        });
+
+        /** SHOW IMAGES */
+        function showImages() {
+            
+            containerdad.innerHTML = files.reduce((prev, curr, index) => {
+                return `${prev}
+                    <div class="image">
+                        <span onclick="delImage(${index})">&times;</span>
+                        <img src="${URL.createObjectURL(curr)}" />
+                    </div>`
+            }, '');
+            let fileType = file.type; //getting selected file type
+            let validExtensions = ["image/jpeg", "image/jpg", "image/png"]; //adding some valid image extensions in array
+            if(validExtensions.includes(fileType)){ //if user selected file is an image file
+                let fileReader = new FileReader(); //creating new FileReader object
+                fileReader.onload = ()=>{
+                let fileURL = fileReader.result; //passing user file source in fileURL variable
+                let imgTag = `<img src="${fileURL}" alt="">`; //creating an img tag and passing user selected file source inside src attribute
+                dropArea.innerHTML = imgTag; //adding that created img tag inside dropArea container
+                }
+                fileReader.readAsDataURL(file);
+            }else{
+                alert("This is not an Image File!");
+                dropArea.classList.remove("active");
+                dragText.textContent = "Drag & Drop to Upload File";
+            }
         }
+
+        /* DELETE IMAGE */
+        function delImage(index) {
+        files.splice(index, 1);
+        showImages();
         }
+
+        /* DRAG & DROP */
+        dragArea.addEventListener('dragover', e => {
+            e.preventDefault()
+            dragArea.classList.add('dragover')
+        })
+
+        /* DRAG LEAVE */
+        dragArea.addEventListener('dragleave', e => {
+            e.preventDefault()
+            dragArea.classList.remove('dragover')
+        });
+
+        /* DROP EVENT */
+        dragArea.addEventListener('drop', e => {
+            e.preventDefault()
+            dragArea.classList.remove('dragover');
+
+            let file = e.dataTransfer.files;
+            for (let i = 0; i < file.length; i++) {
+                /** Check selected file is image */
+                if (file[i].type.split("/")[0] != 'image') continue;
+                
+                if (!files.some(e => e.name == file[i].name)) files.push(file[i])
+            }
+            showImages();
+        });
 
     </script>
 </body>
