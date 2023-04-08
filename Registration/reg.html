@@ -113,7 +113,7 @@
                                 <label>10th-Marksheet</label>
                                 <a href="#" id="btntoggle" onclick=drdg()>UPLOAD&nbsp;&nbsp;&#9729;</a></div>
                                 <div><label>11th-Marksheet</label>
-                                <a href="#" id="btntoggle" onclick=drdg()>UPLOAD&nbsp;&nbsp;&#9729;</a></div>
+                                <a href="#" id="btntoggle" onclick=drdg2()>UPLOAD&nbsp;&nbsp;&#9729;</a></div>
                                 <div><label>12th-Marksheet</label>
                                 <a href="#" id="btntoggle" onclick=drdg()>UPLOAD&nbsp;&nbsp;&#9729;</a></div>
                             </div>
@@ -127,7 +127,17 @@
                             <a href="#" id="bit">SUBMIT &#10004;</a>
                         </div>
                         <!-- ------DRAG AND DROP-------- -->
-                        <div class="drag-con" id="drag-con" onclick="close()" style="display: none;">
+                        <div class="drag-con" id="drag-con1" onclick="close()" style="display: none;">
+                            <div class="drag-area">
+                                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                <header>Drag & Drop to Upload File</header>
+                                <span>OR</span>
+                                <button>Browse File</button>
+                                <input type="file" hidden />
+                            </div>
+                            <span id="crossbtn" onclick="closedad()">&#10539;</span>
+                        </div>
+                        <div class="drag-con" id="drag-con2" onclick="close()" style="display: none;">
                             <div class="drag-area">
                                 <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
                                 <header>Drag & Drop to Upload File</header>
@@ -195,24 +205,31 @@
 
     <!-- ------------------UPLOAD FILES TOGGLE---------------------- -->
     <script>
-        const targetDiv = document.getElementById("drag-con");
+        const targetDiv1 = document.getElementById("drag-con1");
+        const targetDiv2 = document.getElementById("drag-con2");
         const btn = document.getElementById("btntoggle");
         
         function drdg(){
-            targetDiv.style.display = "flex";
+            targetDiv1.style.display = "flex";
 
         };
+        function drdg2(){
+            targetDiv2.style.display = "flex";
+
+        }
     </script>
     <!-- ==========================DRAG AND DROP========================== -->
     <script>
 
         // =======salah touch============
 
-        const closeDiv = document.getElementById("drag-con");
+        const closeDiv1 = document.getElementById("drag-con1");
+        const closeDiv2 = document.getElementById("drag-con");
         const cross = document.getElementById("crossbtn");
 
         function closedad() {
-        closeDiv.style.display = "none";
+        closeDiv1.style.display = "none";
+        closeDiv2.style.display = "none";
         }
 
         //selecting all required elements
